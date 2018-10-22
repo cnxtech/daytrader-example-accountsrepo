@@ -35,7 +35,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class AccountsApplication extends SpringBootServletInitializer {
 	
-//  - Configure database environment 
+//  Configure database environment 
     private static String driverClassName = System.getenv("DAYTRADER_DATABASE_DRIVER");
     private static String url = System.getenv("DAYTRADER_DATABASE_URL");
     private static String username = System.getenv("DAYTRADER_DATABASE_USERNAME");
