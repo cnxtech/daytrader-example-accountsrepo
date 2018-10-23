@@ -36,10 +36,7 @@ ENV DAYTRADER_QUOTES_SERVICE=https://daytrader-quotes
 # Set logging variables
 ENV DAYTRADER_LOG_FILENAME=/var/log/daytrader/$DAYTRADER_APP_ARTIFACTID-$DAYTRADER_APP_VERSION.log
 ENV DAYTRADER_LOG_LEVEL=TRACE
-ENV DAYTRADER_LOG_APPENDER=FileAppender
-
-# Create the db folder
-RUN mkdir -p -m 0777 /var/dat/daytrader
+ENV DAYTRADER_LOG_APPENDER=ConsoleAppender
 
 # Create the log folder
 RUN mkdir -p -m 0777 /var/log/daytrader
@@ -60,6 +57,6 @@ RUN chmod 666 $DAYTRADER_TRUSTSTORE_LOCATION
 ARG WAR_FILE=target/$DAYTRADER_WAR_ARTIFACTID-$DAYTRADER_APP_VERSION.war
 ADD ${WAR_FILE} app.war
 
-ENV JAVA_OPTS="-Djavax.net.debug=all -Djavax.net.ssl.trustStore=/var/ssl/daytrader/truststore.jks -Djavax.net.ssl.trustStorePassword=password"
+ENV JAVA_OPTS="-Djavax.net.ssl.trustStore=/var/ssl/daytrader/truststore.jks -Djavax.net.ssl.trustStorePassword=password"
 
 ENTRYPOINT exec java $JAVA_OPTS -jar app.war

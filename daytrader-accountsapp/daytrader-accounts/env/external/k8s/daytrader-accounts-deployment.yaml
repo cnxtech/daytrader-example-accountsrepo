@@ -16,12 +16,22 @@ spec:
         app: daytrader-accounts
     spec:
       containers:
-      - image: dhvines/daytrader-accounts:4.0.15
-        imagePullPolicy: IfNotPresent
-        name: daytrader-accounts
+      - name: daytrader-accounts
+        image: dhvines/daytrader-accounts:4.0.17
+        imagePullPolicy: Always
         ports:
         - containerPort: 1443
           protocol: TCP
+        readinessProbe:  
+          httpGet:
+            path: /health
+            scheme: HTTPS
+            port: 1443
+        livenessProbe:  
+          httpGet:
+            path: /health
+            scheme: HTTPS
+            port: 1443
         env:
         - name: ACCOUNTS_SERVICE_ROUTE
           value: https://daytrader-accounts
