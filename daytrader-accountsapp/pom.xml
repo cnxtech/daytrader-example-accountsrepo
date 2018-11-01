@@ -53,9 +53,6 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>	  
-<!-- 
-		- Upgraded to Log4j2
--->	
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -73,13 +70,18 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-<!-- 
-		- Upgraded to Java 8
--->
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
 			</plugin>			
+		    <!-- Workaround: Spring Boot fails to run maven-surefire-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	
