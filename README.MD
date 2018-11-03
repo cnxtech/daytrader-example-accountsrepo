@@ -235,22 +235,57 @@ Note: attributes not directly related to accounts are struck through in the diag
         
         To create the service,
 
-        1.  apply -f accounts-service.yaml
+            1.  $ apply -f accounts-service.yaml
         
-        2.  kubectl get services
+            2.  $ kubectl get services
         
-            ## Note of the CLUSTER-IP; that's the IP of the service proxy
-             
-        3.  $ kubectl exec {POD_NAME} -- curl -k https://{CLUSTER-IP}/health
+                NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
+                daytrader-accounts     ClusterIP   10.100.17.24     <none>        443/TCP         3d
+       
+                ## Notes
         
-            ## The above command instructs Kubernetes to execute the "curl" command inside the container of one of the pods. 
-            ## Curl sent an HTTPS request to the service IP; which is backed by one of more pods. The service proxy selected
-            ## a random pod and forwarded the request to it. The application running inside the pod handled the request, and
-            ## an HTTPS response indicating that it is "UP". So you should see {"status":"UP"}
+                a.  The above command creates a service proxy. The service proxy listens on the CLUSTER IP and PORT. It is backed by endpoints 
+                    to one or more pods. When the service proxy receives an HTTPS request, it selects one of the endpoints (pods) and forwards 
+                    it to the pod. The application running in the pod handles the request and returns an HTTPS response
             
-        See also https://kubernetes.io/docs/concepts/services-networking/service/
+                b.  There is no EXTERNAL-IP to the service. This means that you can't access this service from outside the cluster. You can only 
+                    access it from inside the cluster or from another component that resides inside the cluster. These options will be described 
+                    below
+        
+        To access the service from inside the cluster,
+            
+            1.  $ kubectl get pods
+        
+                # Note the NAME of the accounts pod; you'll need it to execute the next command
+        
+            2.  $ kubectl exec <POD_NAME> -it - curl -k https://<CLUSTER-IP>/health
+        
+            -- OR --
+            
+                $ kubectl exec <POD_NAME> -it - curl -k https://<SERVICE_NAME>/health
+            
+            ## Notes
+        
+                a.  These 'curl' commands don't work if you run them in the accounts pod on Minikube. If you run them on another POD, they do work.
+        
+                b.  These commands instruct Kubernetes to execute the "curl" command inside the container of one of the pods. Curl then sends an HTTPS 
+                    request to the service IP; which is backed by one of more pods. The service proxy selected a random pod and forwarded the request 
+                    to it. The application running inside the pod handled the request, and an HTTPS response indicating that it is "UP".  
+            
+        To access the service from outside the cluster, using the API server
+                        
+            1.  $ kubectl proxy
+        
+                Starting to serve on 127.0.0.1:8001
+                
+                ## Takes care of locating and authenticating to the API server.
 
-      
+            2.  $ curl -k http://localhost:8001/api/v1/namespaces/default/services/https:daytrader-accounts:/proxy/health
+        
+                ## The above command accesses the accounts service through the API Server.
+
+        See also https://kubernetes.io/docs/concepts/services-networking/service/
+        
 #### Troubleshooting
         
     Review the standard output from your application using your pod names
