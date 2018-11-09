@@ -215,7 +215,7 @@ Note: attributes not directly related to accounts are struck through in the diag
 
 	    1.  $ cd daytrader-accountsapp\daytrader-accounts\env\external\k8s
     
-		2.	$ kubectl apply -f accounts-deployment.yaml 
+		2.	$ kubectl apply -f daytrader-accounts-deployment.yaml 
 		
 		3.  $ kubectl get pods -o wide
 		
@@ -235,7 +235,7 @@ Note: attributes not directly related to accounts are struck through in the diag
         
         To create the service,
 
-            1.  $ apply -f accounts-service.yaml
+            1.  $ kubectl apply -f daytrader-accounts-service.yaml
         
             2.  $ kubectl get services
         
@@ -258,7 +258,7 @@ Note: attributes not directly related to accounts are struck through in the diag
         
                 # Note the NAME of the accounts pod; you'll need it to execute the next command
         
-            2.  $ kubectl exec <POD_NAME> -it - curl -k https://<CLUSTER-IP>/health
+            2.  $ kubectl exec <POD_NAME> -it -- curl -k https://<CLUSTER-IP>/health
             
                 {"status":"UP"}
   
