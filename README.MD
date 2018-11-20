@@ -20,11 +20,11 @@ Consider the following microservices architecture diagram. In this architecture,
 incoming HTTPS requests from the browser and delegates them to the [Gateway Microservice](https://github.com/jpmorganchase/daytrader-example-gatewayrepo/). The 
 Gateway Microservice in turn redirects the request to the ([Accounts Microservice](https://github.com/jpmorganchase/daytrader-example-accountsrepo/), 
 [Portfolios Microservice](https://github.com/jpmorganchase/daytrader-example-portfoliosrepo/), or 
-[Quotes Microservice](https://github.com/jpmorganchase/daytrader-example-quotesrepo/); which implements that business operation. All of these componenets are Spring Boot applications.
+[Quotes Microservice](https://github.com/jpmorganchase/daytrader-example-quotesrepo/); which implements that business operation. All of these components are Spring Boot applications.
 
 ![Target-State-Architecture](images/Target-State-Architecture.JPG)
 
-This README shows how to put Accounts into a Docker Image and how to deploy that Docker Image to Kubernetes. 
+This README shows you now only how to setup and run the Accounts Microservice, but also how to migrate it to Kubernetes
 
 
 
@@ -77,7 +77,7 @@ Maven must be able to authenticate to your DockerHub account so it can push Dock
 
 
 ## Setup
-You will need a cluster to run the application. If you already have a cluster with the NGINX Ingress Controller installed then feel free to use it. If not, we have provided instructions to help you setup a cluster on Minikube, Amazon EKS, Google Kubernetes Engine, and Azure Kubernetes Service. We have also tested the application on those platforms. For additional information see [Picking the right Solution](https://kubernetes.io/docs/setup/pick-right-solution/).
+You will need a cluster to run the application. If you already have a cluster with the NGINX Ingress Controller installed then feel free to use it. If not, we have provided instructions to help you setup a cluster on Minikube, Amazon EKS, Google Kubernetes Engine, and Azure Kubernetes Service. We have also tested the application on those platforms. For other patforms, see [Picking the right Solution](https://kubernetes.io/docs/setup/pick-right-solution/).
 
 1.  [Setup on Minikube](docs/SETUP-ON-MINIKUBE.MD)
 
@@ -99,20 +99,28 @@ You can run the application on Spring Boot or on the Kubernetes Cluser.
 
 **Notes** 
 
-1.  The Accounts application codebase was 100% portable across the Kubernetes platforms that we tested.
+1.  The source code, configuration files, and build scripts were 100% portable across the Kubernetes platforms that we tested.
 
-2.  This means that you can write the code once and run it on any platform. This is great news for developers!
+2.  This means that you can write the code for your application once and run it on any platform. This is great news for developers!
 
 
 
 ## Migration Approach
 
-This section describes the migration of the Accounts Spring Boot Application to Kubernetes in three steps. The reason for documenting this three-step migration approach is so others can migrate their own Spring Boot applications to Kubernetes. In the first step, we show you how to write the Dockerfile and use Maven to generate the Docker Image for our application. This is very straightforward and easy to perform. The last two steps show you how to write YAML configuration files and use kubectl commands to deploy the Docker Image into the Kubernetes Cluster. We then tested this approach across Minikube, Amazon EKS, Google EKS, and Azure AKS Platforms. We discovered the Dockerfile, Maven script, configuration files, and `kubectl` commands to be 100% portable across the Kubernetes platforms that we tested. **Following this approach you can write your application once then run it on any Kubernetes platform. This is great news for DevOps!**
+In this section we will take a look at the three steps that we used to migrate the Accounts Spring Boot Application to Kubernetes. In the first step, we write the `Dockerfile` and use `Maven Dockerfile Plugin` to generate the Docker Image for your application. In the last two steps, we write `YAML configuration files` and use `kubectl` commands to deploy the Docker Image to the Kubernetes Cluster. 
+
+You can migrate the Accounts Spring Boot Applicaiton to Kubernetes in three steps.
 
 1.  [Generate the Docker Image for our Application](docs/GENERATE-DOCKER-IMAGE.MD)
 
 2.  [Create the Kubernetes Deployment for our Docker Image](docs/CREATE-KUBERNETES-DEPLOYMENT.MD)
 
 3.  [Create the Kubernetes Service for our Deployment](docs/CREATE-KUBERNETES-SERVICE.MD)
+
+**Notes** 
+
+1.  The Dockerfile, Maven Dockerfile Plugin, YAML configuration, and kubectl commands were 100% portable across the Kubernetes platforms that we tested. 
+
+2.  This means that you can write the deployment scripts for your application once and run it on any Kubernetes platform. This is great news for DevOps!
 
 
