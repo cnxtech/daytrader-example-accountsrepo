@@ -117,8 +117,8 @@ In this section we will take a look at how we migrated the Accounts Spring Boot 
 
 **Notes** 
 
-1.  The application deployment scripts and commands to run them were 100% portable across the Kubernetes platforms we tested. 
+1.  The application deployment scripts and commands were 100% portable across the Kubernetes platforms we tested. 
 
-2.  This means that you can write deployment scripts once and run on any Kubernetes platform. This is great news for DevOps!
+2.  This means you can write the scripts once and run on any Kubernetes platform. This is great news for DevOps!
 
 
