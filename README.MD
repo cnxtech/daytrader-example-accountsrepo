@@ -55,7 +55,7 @@ Maven must be able to authenticate to your DockerHub account so it can push Dock
     image: YOUR_DOCKERHUB_USERNAME/daytrader-accounts:4.0.18
     ```
 
-3.  In `daytrader-accounts/pom.xml`, you don't have to change the <tag>, but if you do, change the above version too.
+3.  In `daytrader-accounts/pom.xml`, you don't have to change the `<tag>`, but if you do, change the above version too.
         
     ```xml
     <tag>4.0.18</tag>

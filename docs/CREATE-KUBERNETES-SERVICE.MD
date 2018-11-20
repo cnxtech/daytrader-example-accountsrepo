@@ -4,7 +4,7 @@
 The Service load balances requests across the Pods. Remember that the pods are ephemeral. So if one of them stops, the ReplicaSet will 
 create a replacement, but that Pod will have a different IP address. For that reason, clients should not communicate directly with the 
 application in a Pod. Instead clients should talk to applications via their service. 
-    
+
 ### Write the Service Specification
 
 The `service.yaml` is where you specify the selector for the backend pods along with other specifications
