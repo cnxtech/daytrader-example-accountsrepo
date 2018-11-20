@@ -11,13 +11,11 @@
 
 ### Start the Accounts
 
-1.  `$ cd daytrader-accounts/env/external/k8s`
-
-2.  `$ kubectl apply -f deployment.yaml`
+1.  `$ kubectl apply -f daytrader-accounts/env/external/k8s/deployment.yaml`
 
     This command pulls the image from DockerHub and deploys it to the Kubernetes Cluster
     
-3.  `$ kubectl get pods --watch`
+2.  `$ kubectl get pods --watch`
     
     NAME | READY | STATUS | RESTARTS | AGE
     ---- | ----- | ------ | -------- | ---
@@ -25,25 +23,29 @@
     
     Watch until you see READY `1/1` and STATUS `Running` then Ctrl-c to stop watching
     
-3.  `$ kubectl apply -f service.yaml`
+3.  `$ kubectl apply -f daytrader-accounts/env/external/k8s/service.yaml`
 
-Currently, these commands are run manually, but they can easily be added to Maven
+**TODO** Add a `deploy_server` shell script to run these commands. (See Run on Spring Boot)
 
 ### Test the Accounts
                                    
-1. Access the Swagger UI for testing the APIs
+1.  `$ cd daytrader-accounts`
+
+2.  `$ mvn -Pci-k8s clean install`
+
+    This command starts the application, runs the integration tests, and stops the application
+
+    **TODO** Add a `ci-k8s` Maven profile to run the integration tests. (See Run on Spring Boot)
     
 ### Stop the Accounts
 
-1.  `$ cd daytrader-web\env\external\k8s`
+1.  `$ kubectl delete deployments daytrader-accounts`
 
-2.  `$ kubectl delete deployments daytrader-accounts`
+2.  `$ kubectl delete services daytrader-accounts`
 
-3.  `$ kubectl delete services daytrader-accounts`
+**TODO** Add an `undeploy_server` shell script to run these commands. (See Run on Spring Boot)
 
-Currently, these commands are run manually, but they can easily be added to Maven
-
-### Access the Swagger UI
+### Review the Swagger Documentation
 
 1.  Start the Accounts
 
@@ -55,6 +57,6 @@ Currently, these commands are run manually, but they can easily be added to Mave
 
 3.  Point you browser to `https://localhost:1443/swagger-ui.html`
 
-4.  Stop the Accounts after reviewing (or testing) the APIs
+4.  Stop the Accounts after reviewing the APIs
 
 

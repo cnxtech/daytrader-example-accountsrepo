@@ -36,7 +36,7 @@ This command starts the application, runs the integration tests, then stops the 
 
     This command stops the Spring Boot executable WAR
     
-### Access the Swagger Documentation
+### Review the Swagger Documentation
 
 1.  Start the Accounts
 
