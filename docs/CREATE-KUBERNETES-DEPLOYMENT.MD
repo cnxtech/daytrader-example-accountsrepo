@@ -2,7 +2,7 @@
 ## Create the Kubernetes Deployment for our Docker Image
 
 
-### Use `yaml` to specify the deployment configuration
+### Write the Deployment Specification
 
 The `deployment.yaml` is where you specify the Docker Image for your application along with other specs
     
@@ -60,7 +60,7 @@ spec:
         - name: GET_HOSTS_FROM
           value: dns
 ```
-### Use `kubectl apply -f` to create the deloyment resource
+### Create the Deloyment Resource
 
 1.  `$ kubectl apply -f deployment.yaml`
 
@@ -80,7 +80,7 @@ spec:
     
     You should see `Tomcat started on port(s): 1443 (https)`
     
-### Use `kubectl port-forward` to test the connection
+### Test the Deployment Connection
         
 1.  `$ kubectl port-forward daytrader-accounts-xxxxxxxxx-xxxxx 8888:1443`
     

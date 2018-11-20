@@ -6,6 +6,7 @@ The APIs to the accounts business operations
 
 
 ## Monolithic Architecture
+
 DayTrader is multi-tier application is built around the paradigm of an online stock trading system. Example business operations include
 login, register, view portfolio, lookup stock quotes, and buy or sell stock. DayTrader was originally developed by IBM and donated 
 to the Apache Geronimo community in the 2005 timeframe. The DayTrader architecture is representitive of monolithic applications that 
@@ -23,8 +24,6 @@ Gateway Microservice in turn redirects the request to the ([Accounts Microservic
 [Quotes Microservice](https://github.com/jpmorganchase/daytrader-example-quotesrepo/); which implements that business operation. All of these components are Spring Boot applications.
 
 ![Target-State-Architecture](images/Target-State-Architecture.JPG)
-
-This README shows you now only how to setup and run the Accounts Microservice, but also how to migrate it to Kubernetes
 
 
 
@@ -77,6 +76,7 @@ Maven must be able to authenticate to your DockerHub account so it can push Dock
 
 
 ## Setup
+
 You will need a cluster to run the application. If you already have a cluster with the NGINX Ingress Controller installed then feel free to use it. If not, we have provided instructions to help you setup a cluster on Minikube, Amazon EKS, Google Kubernetes Engine, and Azure Kubernetes Service. We have also tested the application on those platforms. For other patforms, see [Picking the right Solution](https://kubernetes.io/docs/setup/pick-right-solution/).
 
 1.  [Setup on Minikube](docs/SETUP-ON-MINIKUBE.MD)
@@ -85,7 +85,7 @@ You will need a cluster to run the application. If you already have a cluster wi
 
 3.  [Setup on Google GKE](docs/SETUP-ON-GKE.MD)
 
-3.  [Setup on Azure AKS](docs/SETUP-ON-AKS.MD)
+4.  [Setup on Azure AKS](docs/SETUP-ON-AKS.MD)
 
 
 
@@ -119,6 +119,6 @@ In this section we will take a look at how we migrated the Accounts Spring Boot 
 
 1.  The application deployment scripts and commands were 100% portable across the Kubernetes platforms we tested. 
 
-2.  This means you can write the scripts once and run on any Kubernetes platform. This is great news for DevOps!
+2.  This means you can write the scripts once and deploy to any Kubernetes platform. This is great news for DevOps!
 
 

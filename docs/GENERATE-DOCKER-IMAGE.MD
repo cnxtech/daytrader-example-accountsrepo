@@ -3,7 +3,7 @@
 ## Generate the Docker Image for our Application
 
  
-### Create the Dockerfile
+### Write the Dockerfile
     
 The `Dockerfile` is where you define all the commands to setup the environment and start the Accounts in the container.
 
@@ -57,9 +57,9 @@ ENV JAVA_OPTS="-Djavax.net.ssl.trustStore=/var/ssl/daytrader/truststore.jks -Dja
 ENTRYPOINT exec java $JAVA_OPTS -jar app.war
 ```
 
-### Add Dockerfile Maven Plugin
+### Add the Dockerfile Plugin
 
-In `daytrader-accountsapp/daytrader-accounts/pom.xml`, add the [Dockerfile Maven Plugin](https://github.com/spotify/dockerfile-maven) and specify the DockerHub account. 
+In `daytrader-accountsapp/daytrader-accounts/pom.xml`, add the [Dockerfile Plugin](https://github.com/spotify/dockerfile-maven) and specify the DockerHub account. 
         
 ```xml
 <plugin>
@@ -86,15 +86,15 @@ In `daytrader-accountsapp/daytrader-accounts/pom.xml`, add the [Dockerfile Maven
 </plugin>
 ```
 
-### Build and Push the Docker image
+### Build and Push the Docker Image
 
-With the `Dockerfile` and the `Dockerfile Maven Plugin` in place, we can use Maven to build and push the Docker image to DockerHub.
+With the `Dockerfile` and the `Dockerfile Plugin` in place, we can use Maven to build and push the Docker image to DockerHub.
 
 1.  `$ cd daytrader-accountsapp`
 
 2.  `$ mvn -Pcd clean install`
 
-This command creates an image with the version <tag> you specified in the configuration. You can update this <tag> for a rolling update.
+This command creates an image with the version `<tag>` you specified in the plugin. You must update this `<tag>` for a rolling update.
     
 
 

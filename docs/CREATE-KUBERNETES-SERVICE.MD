@@ -5,7 +5,7 @@ The Service load balances requests across the Pods. Remember that the pods are e
 create a replacement, but that Pod will have a different IP address. For that reason, clients should not communicate directly with the 
 application in a Pod. Instead clients should talk to applications via their service. 
     
-### Use `yaml` to specify the service configuration
+### Write the Service Specification
 
 The `service.yaml` is where you specify the selector for the backend pods along with other specifications
 
@@ -28,7 +28,7 @@ spec:
   type: ClusterIP
 ```
 
-### Use `kubectl apply -f` to create the service resource
+### Create the Service Resource
 
 1.  `$ kubectl apply -f service.yaml`
            
@@ -45,9 +45,9 @@ spec:
             
     See also [Kubernetes Concepts - Services, Load Balancing, and Networking](https://kubernetes.io/docs/concepts/services-networking/service)
            
-### Use `kubectl proxy` to test the connection
+### Test the Service Connection
                         
-1.  Start the proxy to locates and authenticate to the API Server.
+1.  Start the proxy to locate and authenticate to the API Server.
     
     `$ kubectl proxy`
         
