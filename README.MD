@@ -99,17 +99,15 @@ You can run the application on Spring Boot or on the Kubernetes Cluser.
 
 **Notes** 
 
-1.  The source code, configuration files, and build scripts were 100% portable across the Kubernetes platforms that we tested.
+1.  The application code and build scripts were 100% portable across the Kubernetes platforms we tested.
 
-2.  This means that you can write the code for your application once and run it on any platform. This is great news for developers!
+2.  This means you can write the code once and run it on any platform. This is great news for developers!
 
 
 
 ## Migration Approach
 
-In this section we will take a look at the three steps that we used to migrate the Accounts Spring Boot Application to Kubernetes. In the first step, we write the `Dockerfile` and use `Maven Dockerfile Plugin` to generate the Docker Image for your application. In the last two steps, we write `YAML configuration files` and use `kubectl` commands to deploy the Docker Image to the Kubernetes Cluster. 
-
-You can migrate the Accounts Spring Boot Applicaiton to Kubernetes in three steps.
+In this section we will take a look at how we migrated the Accounts Spring Boot Application to Kubernetes. 
 
 1.  [Generate the Docker Image for our Application](docs/GENERATE-DOCKER-IMAGE.MD)
 
@@ -119,8 +117,8 @@ You can migrate the Accounts Spring Boot Applicaiton to Kubernetes in three step
 
 **Notes** 
 
-1.  The Dockerfile, Maven Dockerfile Plugin, YAML configuration, and kubectl commands were 100% portable across the Kubernetes platforms that we tested. 
+1.  The application deployment scripts and commands to run them were 100% portable across the Kubernetes platforms we tested. 
 
-2.  This means that you can write the deployment scripts for your application once and run it on any Kubernetes platform. This is great news for DevOps!
+2.  This means that you can write deployment scripts once and run on any Kubernetes platform. This is great news for DevOps!
 
 
