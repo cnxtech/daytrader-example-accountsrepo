@@ -19,14 +19,12 @@
     This command runs the Spring Boot executable WAR
     
 ### Test the Accounts
-
-Run the integration tests
-                                 
+                                
 1.  `$ cd daytrader-accounts`
     
 2.  `$ mvn -Pci clean install`
 
-This command starts the application, runs the integration tests, then stops the application
+    This command starts the application, runs the integration tests, then stops the application
     
 ### Stop the Accounts
 
