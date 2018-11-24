@@ -49,13 +49,13 @@
 
 1.  Start the Accounts
 
-2.  `kubectl port-forward daytrader-accounts-xxxxxxxxx-xxxxx`
+2.  `kubectl port-forward daytrader-accounts-xxxxxxxxx-xxxxx` 1888:1443
 
-    You should see `Forwarding from 127.0.0.1:8888 -> 1443`
+    You should see `Forwarding from 127.0.0.1:1888 -> 1443`
     
-    This command forwards local port 8888 to port 1443 of your Pod
+    This command forwards local port 1888 to port 1443 of your Pod
 
-3.  Point you browser to `https://localhost:1443/swagger-ui.html`
+3.  Point you browser to `https://localhost:1888/swagger-ui.html`
 
 4.  Stop the Accounts after reviewing the APIs
 

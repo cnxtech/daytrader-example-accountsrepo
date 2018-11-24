@@ -15,7 +15,6 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -323,7 +322,8 @@
 										<javax.net.ssl.trustStore>${daytraderTruststoreLocation}</javax.net.ssl.trustStore>
 										<javax.net.ssl.trustStorePassword>${daytraderTruststorePassword}</javax.net.ssl.trustStorePassword>
 									</systemPropertyVariables>
-									
+				                    <!-- Don't use system class loader or else maven-failsafe-plugin fails --> 
+                                    <useSystemClassLoader>false</useSystemClassLoader>
 								</configuration>
 							</execution>
 						</executions>
