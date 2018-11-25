@@ -135,21 +135,6 @@ public class AccountsIntegrationTests {
      	   fail("tradeBuildDB(false) threw exception " + exceptionAsString);
  	   }
    }
-   
-   @Test
-   public void testGetAccountData() throws Exception 
-   {
-	   // This a negative test as it requires the portfolios service being up
-	   try 
-	   { 			   
-		   accountsService.getAccountData(accountData.getProfileID());
-		   fail("Should throw an exception if portfolios service is not running.");
-	   }
-	   catch(Throwable t)
-	   {
-		   assertTrue(t instanceof javax.ws.rs.InternalServerErrorException);
-	   }
-   }
 
    @Test
    public void testGetAccountProfileData() throws Exception 

@@ -37,7 +37,7 @@ export SERVER_PORT=1443
 export SERVER_PORT_HTTPS=1443
 #
 # set service routes
-#
+#                                                                                                                                               
 export DAYTRADER_ACCOUNTS_SERVICE=https://localhost:1443
 export DAYTRADER_GATEWAY_SERVICE=https://localhost:2443
 export DAYTRADER_PORTFOLIOS_SERVICE=https://localhost:3443

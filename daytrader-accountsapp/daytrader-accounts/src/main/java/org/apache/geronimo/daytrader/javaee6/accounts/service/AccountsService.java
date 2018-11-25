@@ -327,7 +327,7 @@ public class AccountsService
 		         		StringWriter sw = new StringWriter();
 		         		ex.printStackTrace(new PrintWriter(sw));
 		         		String exceptionAsString = sw.toString();
-		        		Log.debug("AccountsService:recreateDBTables() - Ignored exception dropping a table: \n" + exceptionAsString);
+		        		// Ignore exception; table may non-exist
    					}
    					else
    					{
