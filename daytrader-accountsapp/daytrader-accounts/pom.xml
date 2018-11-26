@@ -28,7 +28,9 @@
 	<packaging>war</packaging>
 	
 	<dependencies>
+	
 		<!-- Module Dependencies -->
+
 	    <dependency>
             <groupId>org.apache.geronimo.daytrader.javaee6.accounts</groupId>
             <artifactId>daytrader-utilities</artifactId>            
@@ -44,6 +46,7 @@
         </dependency>
 		
 		<!-- Database Dependencies -->
+
 	    <dependency>
 		    <groupId>org.apache.derby</groupId>
 		    <artifactId>derby</artifactId>
@@ -51,6 +54,7 @@
 	    </dependency>
 
 		<!-- Swagger Dependencies -->
+
 	    <dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -63,10 +67,8 @@
 			<version>2.9.2</version>
 		</dependency>
 
-<!--
-		- Upgraded to Spring Boot
-		- These dependencies must precede Third Party
--->	
+		<!-- Must Precede Third Party Dependencies-->	
+
 	    <dependency>
 		    <groupId>org.apache.tomcat</groupId>
 		    <artifactId>tomcat-dbcp</artifactId>
@@ -115,14 +117,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-		<!-- 
-		spring-boot-starter-security: Enables security to spring boot actuator endpoints.     
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		-->
 				
 		<!-- Third Party Dependencies -->
 	
@@ -153,14 +147,7 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-
-<!--         
-		<dependency>
-    		<groupId>com.fasterxml.jackson.datatype</groupId>
-    		<artifactId>jackson-datatype-jsr310</artifactId>
-    		<version>2.8.5</version>
-		</dependency>
--->			
+		
 		<dependency>
    			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
