@@ -1,5 +1,6 @@
 #!/bin/sh
 echo "in delete_service.sh"
+
 #
 # Set the current directory
 #
@@ -9,18 +10,19 @@ export CURRENT_DIRECTORY=$(pwd)
 #
 # Delete the deployment
 #
-kubectl delete deployments $PROJECT_ARTIFACTID
+kubectl delete deployments daytrader-accounts
 
 #
 # Delete the service
 #
-kubectl delete services $PROJECT_ARTIFACTID
+kubectl delete services daytrader-accounts
 
 #
-# Stop the kubectl proxy
+# Stop kubectl proxy
 #
-kill -9 $(pgrep -f "kubectl proxy")  
+kill -9 $(pgrep -f "create_service.sh")  
+kill -9 $(pgrep -f "kubectl proxy") 
 
-echo "end of create_service.sh"
+echo "end of delete_service.sh"
 #
 # exit 0

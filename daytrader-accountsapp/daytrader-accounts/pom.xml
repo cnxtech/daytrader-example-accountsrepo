@@ -183,8 +183,7 @@
 			</resource>
 		</resources>
 		
-		<plugins>
-			
+		<plugins>		
         </plugins> 
 	</build>
 	
@@ -197,7 +196,7 @@
   				<activeByDefault>true</activeByDefault>
 			</activation>
   			 <properties>
-                <daytraderKeystoreFolder>${basedir}/src/main/resources/external/ssl</daytraderKeystoreFolder>
+                <daytraderKeystoreFolder>${project.basedir}/src/main/resources/external/ssl</daytraderKeystoreFolder>
                 <daytraderLogLevel>TRACE</daytraderLogLevel>
                 <daytraderLogFilename>/var/log/daytrader/${daytraderAppArtifactId}-${daytraderAppVersion}.log</daytraderLogFilename>
                 <daytraderLogAppender>ConsoleAppender</daytraderLogAppender>
@@ -299,8 +298,8 @@
                                         <condition property="buildScript" value="start_server.bat" else="start_server.sh">
                                             <os family="windows"/>
                                         </condition>
-                                        <echo>Starting ${project.basedir}/env/external/bin/${buildScript}</echo>
-                                        <exec executable="${project.basedir}/env/external/bin/${buildScript}" spawn="true">
+                                        <echo>Starting ${project.basedir}/env/external/springboot/bin/${buildScript}</echo>
+                                        <exec executable="${project.basedir}/env/external/springboot/bin/${buildScript}" spawn="true">
                                         </exec>
                                     </target>
                                 </configuration>
@@ -332,8 +331,8 @@
                                         <condition property="buildScript" value="stop_server.bat" else="stop_server.sh">
                                             <os family="windows"/>
                                         </condition>
-                                        <echo>Starting ${project.basedir}/env/external/bin/${buildScript}</echo>
-                                        <exec executable="${project.basedir}/env/external/bin/${buildScript}" spawn="true">
+                                        <echo>Starting ${project.basedir}/env/external/springboot/bin/${buildScript}</echo>
+                                        <exec executable="${project.basedir}/env/external/springboot/bin/${buildScript}" spawn="true">
                                         </exec>
                                     </target>
                                 </configuration>
@@ -353,11 +352,11 @@
   		<profile>
   			<id>kubernetes</id>
   			<properties>
-  				<daytraderKeystoreFolder>${basedir}/src/main/resources/external/ssl</daytraderKeystoreFolder>
+  				<daytraderKeystoreFolder>${project.basedir}/src/main/resources/external/ssl</daytraderKeystoreFolder>
 				<docker.image.prefix>${user.name}</docker.image.prefix>
 				<dockerfile-maven-version>1.4.0</dockerfile-maven-version>	
 
-                <daytraderKeystoreFolder>${basedir}/src/main/resources/external/ssl</daytraderKeystoreFolder>
+                <daytraderKeystoreFolder>${project.basedir}/src/main/resources/external/ssl</daytraderKeystoreFolder>
                 <daytraderLogLevel>TRACE</daytraderLogLevel>
                 <daytraderLogFilename>/var/log/daytrader/${daytraderAppArtifactId}-${daytraderAppVersion}.log</daytraderLogFilename>
                 <daytraderLogAppender>ConsoleAppender</daytraderLogAppender>
@@ -473,7 +472,7 @@
                                         <javax.net.ssl.trustStorePassword>${daytraderTruststorePassword}</javax.net.ssl.trustStorePassword>
                                     </systemPropertyVariables>
                                     
-                                    <!-- Don't use system class loader or else maven-failsafe-plugin fails --> 
+                                    <!-- Don't use system class loader or else maven-failsafe-plugin fails -->
                                     <useSystemClassLoader>false</useSystemClassLoader>
                                 </configuration>
                             </execution>
@@ -504,7 +503,7 @@
                                 </goals>
                             </execution>
 
-                            <!-- pre-integration-test: wait for the pod to start -->                                    
+                            <!-- pre-integration-test: wait for the pod to start -->
                             <execution>
                                 <id>wait-for-pod-to-start</id>
                                 <phase>pre-integration-test</phase>
@@ -517,8 +516,8 @@
                                     <goal>run</goal>
                                 </goals>
                              </execution>
-                    
-                            <!-- post-integration-test: Delete the service -->
+                            
+                            <!-- post-integration-test: Delete the service --> 
                             <execution>
                                 <id>delete-service</id>
                                 <phase>post-integration-test</phase>

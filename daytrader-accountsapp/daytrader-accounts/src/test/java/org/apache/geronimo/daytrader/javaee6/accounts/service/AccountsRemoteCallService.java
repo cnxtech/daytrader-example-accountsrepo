@@ -32,7 +32,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * The remote call service to the accounts microservice.
- *
  */
 
 //Don't do any logging from the integration tests unless you send it to its own logger;
@@ -164,7 +163,7 @@ public class AccountsRemoteCallService extends BaseRemoteCallService
     		String address, String email, String creditCard, BigDecimal openBalance) throws Exception 
     {		
   		String url = accountsServiceRoute + "/accounts";
-
+        
   		// Construct the account data from that given params
   		AccountDataBean accountData = new AccountDataBean();
   		accountData.setProfileID(userID);

@@ -100,7 +100,7 @@ public class AccountsIntegrationTests {
         }
    }
 
-   // Notes: can't register withoiut starting the portfolios microservice.
+   // Notes: can't register without starting the portfolios microservice.
    // So we'll test the register method as part of the gateway integration 
    // 
 
