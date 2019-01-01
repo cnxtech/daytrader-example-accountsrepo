@@ -17,8 +17,6 @@
 
 package org.apache.geronimo.daytrader.javaee6.accounts;
 
-import java.util.Arrays;
-
 import javax.sql.DataSource;
 
 import org.apache.catalina.Context;
@@ -27,7 +25,6 @@ import org.apache.tomcat.util.descriptor.web.ContextResource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
